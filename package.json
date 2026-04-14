@@ -1,0 +1,22 @@
+{
+  "name": "langlearn",
+  "version": "1.0.0",
+  "description": "personal language notebook",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "if exist www rmdir /s /q www && mkdir www && copy web_client\\web_index.html www\\index.html && copy web_client\\web_base.css www\\base.css && copy web_client\\web_main.js www\\main.js && copy web_client\\web_config.js www\\config.js && xcopy /E /I /Y web_client\\web_german www\\german && xcopy /E /I /Y web_client\\web_japan www\\japan && xcopy /E /I /Y web_client\\web_china www\\china"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/cli": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "marked": "^17.0.1",
+    "openai": "^4.104.0"
+  }
+}

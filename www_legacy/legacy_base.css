@@ -1,0 +1,1054 @@
+/* =========================================================
+   GLOBAL QUICK SETTINGS
+   ========================================================= */
+:root {
+  /* App background & surfaces */
+  --bg-app: #e2e6eb;
+  --panel-bg: #fff;
+  --shadow-panel: 0 1.1rem 2.5rem rgba(15, 23, 42, 0.03);
+
+  /* Typography */
+  --text-base: 1.06rem;
+  --text-small: 0.8rem;
+  --heading: 1.9rem;
+  /* topbar title size */
+  --panel-title: 1.1rem;
+
+  /* Radii */
+  --panel-radius: 1.5rem;
+  --input-radius: 0.8rem;
+  --btn-radius: 0.85rem;
+  /* squarer buttons with soft corners */
+
+  /* Primary button */
+  --btn-bg: #b5302c;
+
+  /* Brand for header */
+  --brand-1: #243b6b;
+  --brand-2: #2d4a88;
+  --brand-text: #ffffff;
+
+  /* Home background tones */
+  --home-bg-1: #f3f6ff;
+  --home-bg-2: #f9fbff;
+  --home-glow-1: rgba(79, 70, 229, 0.08);
+  --home-glow-2: rgba(14, 165, 233, 0.1);
+}
+
+/* =========================================================
+   BASE RESET
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI",
+    sans-serif;
+  background: var(--bg-app);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.6rem;
+  min-height: 3.4rem;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  color: var(--brand-text);
+  box-shadow: 0 6px 18px rgba(20, 30, 60, 0.12);
+}
+
+/* Left group: Home icon + title */
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/* circular home icon button – only emoji house, centered */
+.home-btn {
+  border: none;
+  padding: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 6px 16px rgba(20, 30, 60, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.home-btn::before {
+  content: "🏠";
+}
+
+.home-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.home-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(20, 30, 60, 0.12);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: var(--heading);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+/* Right-side language pills */
+.lang-switch {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.lang-switch button {
+  border-radius: var(--btn-radius);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: 0.15s;
+}
+
+.lang-switch button:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+/* =========================================================
+   APP SHELL
+   ========================================================= */
+.app-shell {
+  height: calc(100vh - 3.4rem);
+  width: 100%;
+}
+
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
+#homeView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 3.5rem);
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(1100px 700px at 20% 15%,
+      var(--home-glow-1),
+      transparent 60%),
+    radial-gradient(900px 600px at 85% 70%, var(--home-glow-2), transparent 55%),
+    linear-gradient(180deg, var(--home-bg-1), var(--home-bg-2));
+}
+
+.home-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.home-title {
+  font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+  line-height: 1.12;
+  font-weight: 800;
+  margin-bottom: 2.2rem;
+  color: #0f172a;
+}
+
+/* Waving emoji */
+.wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2.4s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(18deg);
+  }
+
+  20% {
+    transform: rotate(-8deg);
+  }
+
+  30% {
+    transform: rotate(14deg);
+  }
+
+  40% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(8deg);
+  }
+
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* ============================
+   MULTILINGUAL BACKDROP – ROWS
+   ============================ */
+
+.home-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 4.5rem 8vw 5rem;
+}
+
+.backdrop-line {
+  width: 100%;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  color: #0f172a;
+  opacity: 0.08;
+  font-size: clamp(1.7rem, 3.8vw, 3rem);
+  white-space: nowrap;
+  filter: blur(0.3px);
+  transform: translateX(0);
+}
+
+/* Mobile: Replace text with subtle pattern */
+@media (max-width: 68rem) {
+  .backdrop-text {
+    display: none; /* Hide text on mobile */
+  }
+  
+  #homeView::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+/* gentle sliding animation */
+@keyframes slide-line {
+  0% {
+    transform: translateX(10%);
+  }
+
+  50% {
+    transform: translateX(-10%);
+  }
+
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+.backdrop-de-1,
+.backdrop-de-2,
+.backdrop-jp-1,
+.backdrop-jp-2,
+.backdrop-cn-1,
+.backdrop-cn-2 {
+  animation-name: slide-line;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.backdrop-de-1 {
+  opacity: 0.075;
+  animation-duration: 38s;
+}
+
+.backdrop-de-2 {
+  opacity: 0.08;
+  animation-duration: 32s;
+  animation-direction: reverse;
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+}
+
+.backdrop-jp-1 {
+  opacity: 0.085;
+  animation-duration: 36s;
+}
+
+.backdrop-jp-2 {
+  opacity: 0.085;
+  animation-duration: 30s;
+  animation-direction: reverse;
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+}
+
+.backdrop-cn-1 {
+  opacity: 0.09;
+  animation-duration: 34s;
+}
+
+.backdrop-cn-2 {
+  opacity: 0.085;
+  animation-duration: 28s;
+  animation-direction: reverse;
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+}
+
+/* ============================================
+   FLAG CARDS (FULL-FLAG BUTTONS + HOVER LABEL)
+   ============================================ */
+
+.home-cards {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+/* wrapper so flag + label stay together */
+.home-card-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* flag itself */
+.home-card {
+  width: 18rem;
+  height: 12.5rem;
+  border-radius: 1.8rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+}
+
+.home-card-wrap:hover .home-card {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* GERMANY FLAG */
+.home-card--de {
+  background: linear-gradient(to bottom,
+      #000000 0%,
+      #000000 33.33%,
+      #dd0000 33.33%,
+      #dd0000 66.66%,
+      #ffce00 66.66%,
+      #ffce00 100%);
+}
+
+/* JAPAN FLAG */
+.home-card--jp {
+  background: #ffffff;
+  border: 3px solid #e5e5e5;
+}
+
+.home-card--jp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #bc002d 0 40%, transparent 42%);
+}
+
+/* CHINA FLAG */
+.home-card--cn {
+  background: #de2910;
+  position: relative;
+}
+
+/* big main star */
+.home-card--cn::before {
+  content: "★";
+  position: absolute;
+  top: 0.001rem;
+  left: 1.4rem;
+  font-size: 4rem;
+  color: #ffde00;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+/* four smaller stars in a neat arc */
+.home-card--cn .cn-star {
+  position: absolute;
+  font-size: 1.32rem;
+  color: #ffde00;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+}
+
+.home-card--cn .cn-star.s1 {
+  top: 0.1rem;
+  left: 5rem;
+  transform: rotate(20deg);
+}
+
+.home-card--cn .cn-star.s2 {
+  top: 1.3rem;
+  left: 6.1rem;
+  transform: rotate(-20deg);
+}
+
+.home-card--cn .cn-star.s3 {
+  top: 3rem;
+  left: 6.1rem;
+  transform: rotate(0deg);
+}
+
+.home-card--cn .cn-star.s4 {
+  top: 4.3rem;
+  left: 5rem;
+  transform: rotate(20deg);
+}
+
+/* hover label BELOW flag */
+.home-flag-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: 0.35px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.home-card-wrap:hover .home-flag-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* subtitle */
+.home-subtitle {
+  margin-top: 1.2rem;
+  font-size: 1.02rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* =========================================================
+   LANGUAGE PAGES – GRID LAYOUT
+   ========================================================= */
+.page-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr;
+  gap: 1rem;
+  height: 100%;
+  padding: 1rem 1.3rem 1.3rem;
+}
+
+.col-left,
+.col-middle,
+.col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 0;
+}
+
+/* AI panel fills full left column */
+.panel-chat-main {
+  flex: 1;
+}
+
+/* center column */
+.col-middle {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Notebook should fill leftover height, translator hugs content */
+.panel-add.flex-half {
+  flex: 1 1 auto;
+  /* grow */
+}
+
+.panel-translator.flex-half {
+  flex: 0 0 auto;
+  /* don't stretch; just content height */
+}
+
+/* Header row inside panels (AI panels) */
+.panel-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.panel-header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* small tools on the right (history + new chat) */
+.chat-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.icon-btn {
+  border: none;
+  border-radius: 999px;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #b5302c;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.mini-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: #b5302c;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* collapsible history panel */
+.chat-history-panel {
+  margin-top: 0.45rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.75rem;
+  background: #f3f4f6;
+  max-height: 7rem;
+  overflow-y: auto;
+  display: none;
+}
+
+/* inline label layout for translator "From language" */
+.inline-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* list header (saved words) */
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.list-header input {
+  max-width: 11rem;
+}
+
+/* Panels */
+.panel {
+  background: var(--panel-bg);
+  border-radius: var(--panel-radius);
+  box-shadow: var(--shadow-panel);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1.15rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 0;
+  overflow: visible;
+}
+
+/* extra bottom padding ONLY for notebook so button never clips */
+.panel-add {
+  padding-bottom: 2.1rem;
+}
+
+.section-label {
+  display: inline-block;
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* hide label in translator panel (no "Quick translate") */
+.panel-translator .section-label {
+  display: none;
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: var(--panel-title);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Left column scroll if tall */
+.col-left {
+  overflow-y: auto;
+  padding-right: 0.1rem;
+}
+
+/* Saved words list */
+.panel-list {
+  flex: 1;
+  min-height: 0;
+}
+
+.panel-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.word-item {
+  background: #f9fafb;
+  border-radius: 1rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.86rem;
+}
+
+.word-item>div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 0.7rem;
+  cursor: pointer;
+  color: #a1a1aa;
+}
+
+/* history list */
+.history-list {
+  list-style: none;
+  margin: 0.3rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.86rem;
+}
+
+.history-list li {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.6rem;
+  background: #f3f4f6;
+}
+
+/* Chat panel */
+.panel-chat {
+  flex: 1;
+  min-height: 0;
+}
+
+.chat-window {
+  flex: 1;
+  min-height: 11rem;
+  border-radius: 0.9rem;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  padding: 0.75rem 0.7rem 0.4rem;
+  overflow-y: auto;
+  font-size: 0.86rem;
+}
+
+.chat-message {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin-bottom: 0.35rem;
+}
+
+.chat-message.me {
+  text-align: right;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+}
+
+.chat-input-row input {
+  flex: 1;
+  border-radius: 999px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.86rem;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+}
+
+/* translator controls */
+.translator-controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.translator-label {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.translator-label select {
+  border-radius: 0.7rem;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+/* Forms */
+label {
+  font-weight: 500;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border-radius: var(--input-radius);
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.86rem;
+  background: #fff;
+  transition: 0.12s;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* Textareas */
+textarea {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  resize: vertical;
+  min-height: 3.8rem;
+  max-height: 55vh;
+  overflow-y: auto;
+}
+
+/* translation output boxes – smaller */
+textarea[id$="TranslateOut"] {
+  min-height: 3.2rem;
+  max-height: 30vh;
+  margin-top: 0.5rem;
+  /* no giant gap */
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(15, 23, 42, 0.25);
+  box-shadow: 0 0 0 0.15rem rgba(92, 131, 255, 0.16);
+  outline: none;
+}
+
+/* Buttons – squarer */
+.panel button,
+.chat-input-row button,
+.panel-translator button {
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: var(--btn-radius);
+  padding: 0.6rem 1rem;
+  min-height: 2.3rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.12s ease-out;
+  box-shadow: 0 0.55rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+.panel-translator button {
+  width: 100%;
+}
+
+.panel button:hover,
+.chat-input-row button:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.panel button:active,
+.chat-input-row button:active {
+  transform: translateY(0);
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 68rem) {
+  .page-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .app-shell {
+    height: auto;
+    overflow-y: auto;
+    /* Allow scrolling on mobile */
+  }
+
+  /* Reset heights for mobile stacking */
+  .col-left,
+  .col-middle,
+  .col-right {
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Give chat a fixed height on mobile so it doesn't trap scroll but is usable */
+  .panel-chat-main {
+    height: 80vh;
+    max-height: 800px;
+  }
+
+  /* Adjust home title size */
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  /* Adjust backdrop text size */
+  .backdrop-line {
+    font-size: 1.5rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .topbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .home-card {
+    width: 100%;
+    height: 10rem;
+  }
+
+  .panel {
+    padding: 1rem;
+  }
+}
+
+/* =========================================================
+   MOBILE FIXES (Appended)
+   ========================================================= */
+#homeView {
+  height: auto !important;
+  min-height: calc(100vh - 3.5rem);
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  justify-content: flex-start;
+}
+
+.app-shell {
+  height: auto !important;
+  min-height: calc(100vh - 3.4rem);
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 68rem) {
+  #homeView {
+    padding-top: 4rem;
+  }
+  
+  .panel-chat-main {
+    height: 75vh;
+    max-height: 800px;
+  }
+}
+@media (max-width: 68rem) {
+  /* Mobile Bottom Nav */
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    z-index: 50;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .nav-item {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    color: #6b7280;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .nav-item.active {
+    color: #b5302c;
+  }
+
+  .nav-icon {
+    font-size: 1.4rem;
+  }
+
+  /* Mobile Tab Logic */
+  .col-left, .col-middle, .col-right {
+    display: none;
+  }
+
+  .col-left.mobile-active-tab,
+  .col-middle.mobile-active-tab,
+  .col-right.mobile-active-tab {
+    display: flex;
+    height: calc(100vh - 3.4rem - 4rem) !important;
+    overflow-y: auto;
+  }
+  
+  .page-grid {
+    padding-bottom: 5rem;
+  }
+}
+
+/* =========================================================
+   MOBILE FIXES (Appended - Final)
+   ========================================================= */
+.home-card--jp::after {
+  content: '';
+  width: 8rem;
+  height: 8rem;
+  background: #bc002d;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 68rem) {
+  /* Hide top language switch on mobile */
+  .lang-switch {
+    display: none;
+  }
+  
+  /* Make home title smaller */
+  .home-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Fix Japan flag size for mobile */
+  .home-card--jp::after {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  /* Ensure touch targets are large enough */
+  .home-card-wrap {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Ensure bottom nav is clickable and on top */
+  .mobile-bottom-nav {
+    pointer-events: auto;
+    z-index: 9999 !important;
+  }
+  
+  .nav-item {
+    padding: 0.8rem 1rem; /* Larger touch target */
+  }
+
+  /* Mobile Tab Logic - Ensure content is visible */
+  .col-left.mobile-active-tab,
+  .col-middle.mobile-active-tab,
+  .col-right.mobile-active-tab {
+    height: calc(100vh - 3.4rem - 5rem) !important;
+    padding-bottom: 2rem;
+  }
+  
+  .page-grid {
+    display: block; /* Stack block instead of grid on mobile */
+  }
+  
+  /* Hide home button on mobile home screen */
+  body.theme-home .home-btn {
+    display: none !important;
+  }
+}
+

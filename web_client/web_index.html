@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Langlearn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- shared layout -->
+  <!-- shared layout -->
+  <link rel="stylesheet" href="./web_base.css" />
+  <!-- shared layout END -->
+
+  <!-- language themes (keep existing specific styles if needed, but base.css handles most) -->
+  <link rel="stylesheet" href="./web_german/style-german.css" />
+  <link rel="stylesheet" href="./web_japan/style-japanese.css" />
+  <link rel="stylesheet" href="./web_china/style-chinese.css" />
+  <link rel="stylesheet" href="./web_korea/style-korean.css" />
+  <!-- language themes END -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="theme-home">
+  <div class="app-container">
+    <div id="floatingToggle">L</div>
+    <aside class="sidebar">
+      <div class="sidebar-wrapper">
+        <div class="sidebar-header">
+          <div class="brand-icon" id="innerBrandToggle" style="cursor: pointer;">L</div>
+          <h2>Langlearn</h2>
+          <button id="sidebarToggle" class="icon-btn" style="margin-left: auto; color: #64748b;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button id="navHome" class="nav-btn active">
+            <span class="icon">🏠</span> <span>Home</span>
+          </button>
+
+          <div class="nav-divider"></div>
+
+          <!-- German Dropdown -->
+          <div class="nav-group">
+            <button id="navGermanToggle" class="nav-btn nav-dropdown-toggle">
+              <span class="icon">🇩🇪</span> <span>German</span>
+              <span class="chevron">›</span>
+            </button>
+            <div id="navGermanMenu" class="nav-dropdown-content">
+              <button id="navGermanChat" class="nav-btn sub-item">Chat</button>
+              <button id="navGermanNotebook" class="nav-btn sub-item">Notebook</button>
+            </div>
+          </div>
+          <!-- German Dropdown END -->
+
+          <!-- Japanese Dropdown -->
+          <div class="nav-group">
+            <button id="navJapaneseToggle" class="nav-btn nav-dropdown-toggle">
+              <span class="icon">🇯🇵</span> <span>Japanese</span>
+              <span class="chevron">›</span>
+            </button>
+            <div id="navJapaneseMenu" class="nav-dropdown-content">
+              <button id="navJapaneseChat" class="nav-btn sub-item">Chat</button>
+              <button id="navJapaneseNotebook" class="nav-btn sub-item">Notebook</button>
+            </div>
+          </div>
+          <!-- Japanese Dropdown END -->
+
+          <!-- Chinese Dropdown -->
+          <div class="nav-group">
+            <button id="navChineseToggle" class="nav-btn nav-dropdown-toggle">
+              <span class="icon">🇨🇳</span> <span>Chinese</span>
+              <span class="chevron">›</span>
+            </button>
+            <div id="navChineseMenu" class="nav-dropdown-content">
+              <button id="navChineseChat" class="nav-btn sub-item">Chat</button>
+              <button id="navChineseNotebook" class="nav-btn sub-item">Notebook</button>
+            </div>
+          </div>
+          <!-- Chinese Dropdown END -->
+
+          <!-- Korean Dropdown -->
+          <div class="nav-group">
+            <button id="navKoreanToggle" class="nav-btn nav-dropdown-toggle">
+              <span class="icon">🇰🇷</span> <span>Korean</span>
+              <span class="chevron">›</span>
+            </button>
+            <div id="navKoreanMenu" class="nav-dropdown-content">
+              <button id="navKoreanChat" class="nav-btn sub-item">Chat</button>
+              <button id="navKoreanNotebook" class="nav-btn sub-item">Notebook</button>
+            </div>
+          </div>
+          <!-- Korean Dropdown END -->
+
+        </nav>
+      </div>
+    </aside>
+    <!-- SIDEBAR END -->
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+
+      <!-- HOME VIEW -->
+      <section id="homeView" class="view-section active" style="display: block; opacity: 1; transform: none;">
+        <div class="home-hero">
+          <header>
+            <h1>Welcome back! 👋</h1>
+            <p>What language would you like to practice today?</p>
+          </header>
+
+          <div class="lang-cards">
+            <div class="lang-card card-de" id="cardGerman">
+              <div class="card-bg"></div>
+              <div class="card-content">
+                <span class="card-icon">🇩🇪</span>
+                <h3>German</h3>
+                <p>Guten Tag!</p>
+              </div>
+            </div>
+            <div class="lang-card card-jp" id="cardJapanese">
+              <div class="card-bg"></div>
+              <div class="card-content">
+                <span class="card-icon">🇯🇵</span>
+                <h3>Japanese</h3>
+                <p>Konnichiwa!</p>
+              </div>
+            </div>
+            <div class="lang-card card-cn" id="cardChinese">
+              <div class="card-bg"></div>
+              <div class="card-content">
+                <span class="card-icon">🇨🇳</span>
+                <h3>Chinese</h3>
+                <p>Ni Hao!</p>
+              </div>
+            </div>
+            <div class="lang-card card-kr" id="cardKorean">
+              <div class="card-bg"></div>
+              <div class="card-content">
+                <span class="card-icon">🇰🇷</span>
+                <h3>Korean</h3>
+                <p>Annyeong!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- HOME VIEW END -->
+
+      <!-- GERMAN VIEW -->
+      <section id="germanView" class="view-section" style="display: none">
+        <div class="workspace">
+          <!-- Chat Panel -->
+          <div class="panel chat-panel">
+            <div class="panel-header">
+              <h3>🇩🇪 German Chat</h3>
+              <div class="header-controls">
+                <button class="icon-btn" id="newChatDe" title="New Chat">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+                <button class="icon-btn" id="historyDe" title="History">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div id="historyPanelDe" class="history-drawer">
+              <h4>Recent Chats</h4>
+              <ul id="historyListDe"></ul>
+            </div>
+
+            <div class="chat-messages" id="chatHistoryDe">
+              <div class="message ai">
+                <div class="avatar ai-de">AI</div>
+                <div class="msg-content">
+                  <p>Hallo! 👋 (Hello! Wie kann ich dir helfen?)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-input-area">
+              <button class="attach-btn" id="attachBtnDe" title="Add Image">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </button>
+              <input type="file" id="fileInputDe" accept="image/*" hidden />
+              <div class="input-wrapper">
+                <input type="text" id="chatInputDe" placeholder="Type a message..." autocomplete="off">
+              </div>
+              <button class="send-btn" id="sendBtnDe">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div id="imagePreviewDe" class="image-preview"></div>
+          </div>
+
+          <!-- Tools Column -->
+          <div class="tools-column">
+            <div class="panel notebook-panel">
+              <div class="panel-header">
+                <h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 8px; vertical-align: text-bottom;">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                  Notebook
+                </h3>
+              </div>
+              <div class="notebook-form">
+                <input type="text" id="notebookWordDe" class="form-input" placeholder="Word to learn">
+                <textarea id="notebookMeaningDe" class="form-input" placeholder="Explanation / Context"
+                  style="height: 100px;"></textarea>
+                <button id="saveWordDe" class="primary-btn">Save to Notebook</button>
+              </div>
+            </div>
+
+            <div class="panel translator-panel">
+              <div class="panel-header">
+                <h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 8px; vertical-align: text-bottom;">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                  Translator
+                </h3>
+                <div class="header-controls">
+                  <button class="icon-btn" id="transReverseDe" title="Reverse Languages">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="17 1 21 5 17 9"></polyline>
+                      <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                      <polyline points="7 23 3 19 7 15"></polyline>
+                      <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" id="transCopyDe" title="Copy Translation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Context Dropdown -->
+              <div class="custom-select-wrapper">
+                <select id="transContextDe" class="custom-select">
+                  <option value="General">Context: General</option>
+                  <option value="Simple">Context: Simple (Beginner / Kids)</option>
+                  <option value="Formal">Context: Formal / Business</option>
+                  <option value="Casual">Context: Casual / Slang</option>
+                  <option value="Romantic">Context: Romantic / Love</option>
+                  <option value="Travel">Context: Travel / Tourist</option>
+                </select>
+              </div>
+              <div class="translator-body">
+                <div class="trans-split">
+                  <div class="trans-box">
+                    <label>English</label>
+                    <textarea id="transInputDe" placeholder="Enter text..."></textarea>
+                  </div>
+                  <div class="trans-divider"></div>
+                  <div class="trans-box">
+                    <label>German</label>
+                    <div id="transOutputDe" class="trans-result" contenteditable="false">Translation...</div>
+                  </div>
+                </div>
+                <button id="translateBtnDe" class="primary-btn">Translate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- List Column -->
+
+        </div>
+      </section>
+      <!-- GERMAN VIEW END -->
+
+
+
+      <!-- JAPANESE VIEW -->
+      <section id="japaneseView" class="view-section" style="display: none">
+        <div class="workspace">
+          <div class="panel chat-panel">
+            <div class="panel-header">
+              <h3>🇯🇵 Japanese Chat</h3>
+              <div class="header-controls">
+                <button class="icon-btn" id="newChatJp" title="New Chat">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+                <button class="icon-btn" id="historyJp" title="History">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div id="historyPanelJp" class="history-drawer">
+              <h4>Recent Chats</h4>
+              <ul id="historyListJp"></ul>
+            </div>
+
+            <div class="chat-messages" id="chatHistoryJp">
+              <div class="message ai">
+                <div class="avatar ai-jp">AI</div>
+                <div class="msg-content">
+                  <p>こんにちは! 👋 (Konnichiwa! What shall we practice?)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-input-area">
+              <button class="attach-btn" id="attachBtnJp" title="Add Image">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </button>
+              <input type="file" id="fileInputJp" accept="image/*" hidden />
+              <div class="input-wrapper">
+                <input type="text" id="chatInputJp" placeholder="Type a message..." autocomplete="off">
+              </div>
+              <button class="send-btn" id="sendBtnJp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div id="imagePreviewJp" class="image-preview"></div>
+          </div>
+
+          <div class="tools-column">
+            <div class="panel notebook-panel">
+              <div class="panel-header">
+                <h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 8px; vertical-align: text-bottom;">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                  Notebook
+                </h3>
+              </div>
+              <div class="notebook-form">
+                <input type="text" id="notebookWordJp" class="form-input" placeholder="Word to learn">
+                <textarea id="notebookMeaningJp" class="form-input" placeholder="Explanation / Context"
+                  style="height: 100px;"></textarea>
+                <button id="saveWordJp" class="primary-btn">Save to Notebook</button>
+              </div>
+            </div>
+
+            <div class="panel translator-panel">
+              <div class="panel-header">
+                <h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 8px; vertical-align: text-bottom;">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                  Translator
+                </h3>
+                <div class="header-controls">
+                  <button class="icon-btn" id="transReverseJp" title="Reverse Languages">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="17 1 21 5 17 9"></polyline>
+                      <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                      <polyline points="7 23 3 19 7 15"></polyline>
+                      <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" id="transCopyJp" title="Copy Translation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Context Dropdown -->
+              <div class="custom-select-wrapper">
+                <select id="transContextJp" class="custom-select">
+                  <option value="General">Context: General</option>
+                  <option value="Simple">Context: Simple (Beginner / Kids)</option>
+                  <option value="Formal">Context: Formal / Business</option>
+                  <option value="Casual">Context: Casual / Slang</option>
+                  <option value="Romantic">Context: Romantic / Love</option>
+                  <option value="Travel">Context: Travel / Tourist</option>
+                </select>
+              </div>
+              <div class="translator-body">
+                <div class="trans-split">
+                  <div class="trans-box">
+                    <label>English</label>
+                    <textarea id="transInputJp" placeholder="Enter text..."></textarea>
+                  </div>
+                  <div class="trans-divider"></div>
+                  <div class="trans-box">
+                    <label>Japanese</label>
+                    <div id="transOutputJp" class="trans-result" contenteditable="false">Translation...</div>
+                  </div>
+                </div>
+                <button id="translateBtnJp" class="primary-btn">Translate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- List Column -->
+
+        </div>
+      </section>
+      <!-- JAPANESE VIEW END -->
+
+
+
+      <!-- CHINESE VIEW -->
+      <section id="chineseView" class="view-section" style="display: none">
+        <div class="workspace">
+          <div class="panel chat-panel">
+            <div class="panel-header">
+              <h3>🇨🇳 Chinese Chat</h3>
+              <div class="header-controls">
+                <button class="icon-btn" id="newChatCn" title="New Chat">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+                <button class="icon-btn" id="historyCn" title="History">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div id="historyPanelCn" class="history-drawer">
+              <h4>Recent Chats</h4>
+              <ul id="historyListCn"></ul>
+            </div>
+
+            <div class="chat-messages" id="chatHistoryCn">
+              <div class="message ai">
+                <div class="avatar ai-cn">AI</div>
+                <div class="msg-content">
+                  <p>你好! 👋 (Nǐ hǎo! Ready to learn Chinese?)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-input-area">
+              <button class="attach-btn" id="attachBtnCn" title="Add Image">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </button>
+              <input type="file" id="fileInputCn" accept="image/*" hidden />
+              <div class="input-wrapper">
+                <input type="text" id="chatInputCn" placeholder="Type a message..." autocomplete="off">
+              </div>
+              <button class="send-btn" id="sendBtnCn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div id="imagePreviewCn" class="image-preview"></div>
+          </div>
+
+          <div class="tools-column">
+            <div class="panel notebook-panel">
+              <div class="panel-header">
+                <h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 8px; vertical-align: text-bottom;">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                  Notebook
+                </h3>
+              </div>
+              <div class="notebook-form">
+                <input type="text" id="notebookWordCn" class="form-input" placeholder="Word to learn">
+                <textarea id="notebookMeaningCn" class="form-input" placeholder="Explanation / Context"
+                  style="height: 100px;"></textarea>
+                <button id="saveWordCn" class="primary-btn">Save to Notebook</button>
+              </div>
+            </div>
+
+            <div class="panel translator-panel">
+              <div class="panel-header">
+                <h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 8px; vertical-align: text-bottom;">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                  Translator
+                </h3>
+                <div class="header-controls">
+                  <button class="icon-btn" id="transReverseCn" title="Reverse Languages">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="17 1 21 5 17 9"></polyline>
+                      <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                      <polyline points="7 23 3 19 7 15"></polyline>
+                      <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" id="transCopyCn" title="Copy Translation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Context Dropdown -->
+              <div class="custom-select-wrapper">
+                <select id="transContextCn" class="custom-select">
+                  <option value="General">Context: General</option>
+                  <option value="Simple">Context: Simple (Beginner / Kids)</option>
+                  <option value="Formal">Context: Formal / Business</option>
+                  <option value="Casual">Context: Casual / Slang</option>
+                  <option value="Romantic">Context: Romantic / Love</option>
+                  <option value="Travel">Context: Travel / Tourist</option>
+                </select>
+              </div>
+              <div class="translator-body">
+                <div class="trans-split">
+                  <div class="trans-box">
+                    <label>English</label>
+                    <textarea id="transInputCn" placeholder="Enter text..."></textarea>
+                  </div>
+                  <div class="trans-divider"></div>
+                  <div class="trans-box">
+                    <label>Chinese</label>
+                    <div id="transOutputCn" class="trans-result" contenteditable="false">Translation...</div>
+                  </div>
+                </div>
+                <button id="translateBtnCn" class="primary-btn">Translate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- List Column -->
+
+        </div>
+      </section>
+      <!-- CHINESE VIEW END -->
+
+
+
+      <!-- KOREAN VIEW -->
+      <section id="koreanView" class="view-section" style="display: none">
+        <div class="workspace">
+          <div class="panel chat-panel">
+            <div class="panel-header">
+              <h3>🇰🇷 Korean Chat</h3>
+              <div class="header-controls">
+                <button class="icon-btn" id="newChatKr" title="New Chat">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+                <button class="icon-btn" id="historyKr" title="History">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div id="historyPanelKr" class="history-drawer">
+              <h4>Recent Chats</h4>
+              <ul id="historyListKr"></ul>
+            </div>
+
+            <div class="chat-messages" id="chatHistoryKr">
+              <div class="message ai">
+                <div class="avatar ai-kr">AI</div>
+                <div class="msg-content">
+                  <p>안녕하세요! 👋 (Annyeonghaseyo! Ready to learn Korean?)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-input-area">
+              <button class="attach-btn" id="attachBtnKr" title="Add Image">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </button>
+              <input type="file" id="fileInputKr" accept="image/*" hidden />
+              <div class="input-wrapper">
+                <input type="text" id="chatInputKr" placeholder="Type a message..." autocomplete="off">
+              </div>
+              <button class="send-btn" id="sendBtnKr">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div id="imagePreviewKr" class="image-preview"></div>
+          </div>
+
+          <div class="tools-column">
+            <div class="panel notebook-panel">
+              <div class="panel-header">
+                <h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 8px; vertical-align: text-bottom;">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                  Notebook
+                </h3>
+              </div>
+              <div class="notebook-form">
+                <input type="text" id="notebookWordKr" class="form-input" placeholder="Word to learn">
+                <textarea id="notebookMeaningKr" class="form-input" placeholder="Explanation / Context"
+                  style="height: 100px;"></textarea>
+                <button id="saveWordKr" class="primary-btn">Save to Notebook</button>
+              </div>
+            </div>
+
+            <div class="panel translator-panel">
+              <div class="panel-header">
+                <h3>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="margin-right: 8px; vertical-align: text-bottom;">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                  Translator
+                </h3>
+                <div class="header-controls">
+                  <button class="icon-btn" id="transReverseKr" title="Reverse Languages">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="17 1 21 5 17 9"></polyline>
+                      <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                      <polyline points="7 23 3 19 7 15"></polyline>
+                      <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" id="transCopyKr" title="Copy Translation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Context Dropdown -->
+              <div class="custom-select-wrapper">
+                <select id="transContextKr" class="custom-select">
+                  <option value="General">Context: General</option>
+                  <option value="Simple">Context: Simple (Beginner / Kids)</option>
+                  <option value="Formal">Context: Formal / Business</option>
+                  <option value="Casual">Context: Casual / Slang</option>
+                  <option value="Romantic">Context: Romantic / Love</option>
+                  <option value="Travel">Context: Travel / Tourist</option>
+                </select>
+              </div>
+              <div class="translator-body">
+                <div class="trans-split">
+                  <div class="trans-box">
+                    <label>English</label>
+                    <textarea id="transInputKr" placeholder="Enter text..."></textarea>
+                  </div>
+                  <div class="trans-divider"></div>
+                  <div class="trans-box">
+                    <label>Korean</label>
+                    <div id="transOutputKr" class="trans-result" contenteditable="false">Translation...</div>
+                  </div>
+                </div>
+                <button id="translateBtnKr" class="primary-btn">Translate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- List Column -->
+
+        </div>
+      </section>
+      <!-- KOREAN VIEW END -->
+
+
+
+      <!-- NOTEBOOK VIEW (Global) -->
+      <section id="notebookView" class="view-section" style="display: none">
+        <div class="workspace" style="grid-template-columns: 1fr;">
+          <div class="panel" style="height: 100%; padding: 0;">
+            <div class="panel-header">
+              <h3 id="notebookTitle">📚 Global Notebook</h3>
+              <div class="header-controls">
+                <input type="text" id="globalSearch" class="search-bar" placeholder="Search words..."
+                  style="width: 300px; border: none; background: transparent;">
+              </div>
+            </div>
+            <!-- Add Word Section (Language Specific) -->
+            <div class="notebook-add-section">
+                 <input type="text" id="nbViewWord" placeholder="Word">
+                 <input type="text" id="nbViewMeaning" placeholder="Meaning / Context" style="flex: 2;">
+                 <button id="nbViewSaveBtn" class="primary-btn">Add Word</button>
+            </div>
+            
+            <div class="notebook-list-container">
+              <ul id="globalNotebookList" class="word-list">
+                <!-- Words populated by JS -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- NOTEBOOK VIEW (Global) END -->
+    </main>
+    <!-- MAIN CONTENT AREA END -->
+
+    <!-- BOTTOM NAVIGATION (Mobile Only) -->
+    <nav class="bottom-nav">
+      <button id="mobileNavHome" class="nav-btn active">
+        <span class="icon">🏠</span>
+        <span class="label">Home</span>
+      </button>
+      <button id="mobileNavGerman" class="nav-btn" data-lang="de">
+        <span class="icon">🇩🇪</span>
+        <span class="label">DE</span>
+      </button>
+      <button id="mobileNavJapanese" class="nav-btn" data-lang="jp">
+        <span class="icon">🇯🇵</span>
+        <span class="label">JP</span>
+      </button>
+      <button id="mobileNavChinese" class="nav-btn" data-lang="cn">
+        <span class="icon">🇨🇳</span>
+        <span class="label">CN</span>
+      </button>
+      <button id="mobileNavKorean" class="nav-btn" data-lang="kr">
+        <span class="icon">🇰🇷</span>
+        <span class="label">KR</span>
+      </button>
+    </nav>
+    <!-- BOTTOM NAVIGATION (Mobile Only) END -->
+  </div>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="./web_config.js"></script>
+  <script src="./web_main.js?v=2" type="module" defer></script>
+</body>
+
+</html>

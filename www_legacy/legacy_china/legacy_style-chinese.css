@@ -1,0 +1,18 @@
+/* CHINESE THEME */
+body.theme-chinese {
+  --btn-bg: #d35400;
+  background: linear-gradient(130deg, #fff0e3 0%, #ffe4cb 45%, #ffffff 100%);
+}
+
+body.theme-chinese .topbar {
+  background: #8b1a1a;
+  color: #fff;
+}
+
+body.theme-chinese .panel h2::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #d35400;
+  border-radius: 999px;
+}

@@ -1,0 +1,20 @@
+/* GERMAN THEME */
+body.theme-german {
+  --btn-bg: #b5302c;
+  background: linear-gradient(160deg, #dfe4e9 0%, #edf1f6 40%, #e6eaef 100%);
+}
+
+body.theme-german .panel h2::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #b5302c;
+  border-radius: 999px;
+}
+
+body.theme-german .topbar {
+  background: #0f172a;
+  color: #fff;
+}
+
+/* GERMAN THEME END */

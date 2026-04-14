@@ -1,0 +1,28 @@
+/* JAPANESE / SAKURA THEME */
+body.theme-japanese {
+  --btn-bg: #f57d9d;
+  background: linear-gradient(170deg, #ffe4ef 0%, #fff7fb 35%, #ffffff 100%);
+  color: #4b2b35;
+}
+
+body.theme-japanese .topbar {
+  background: #ffcede;
+  color: #4b2b35;
+  box-shadow: 0 14px 25px rgba(255, 151, 188, 0.35);
+}
+
+body.theme-japanese .panel {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 141, 164, 0.15);
+  box-shadow: 0 20px 36px rgba(252, 141, 164, 0.12);
+}
+
+body.theme-japanese .panel h2::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #f57d9d;
+  border-radius: 999px;
+}
+
+/* JAPANESE / SAKURA THEME END */

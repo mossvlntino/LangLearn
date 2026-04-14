@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Langlearn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- shared layout -->
+  <link rel="stylesheet" href="./base.css" />
+
+  <!-- language themes -->
+  <link rel="stylesheet" href="./german/style-german.css" />
+  <link rel="stylesheet" href="./japan/style-japanese.css" />
+  <link rel="stylesheet" href="./china/style-chinese.css" />
+</head>
+
+<body class="theme-home">
+  <!-- ============ TOP BAR ============ -->
+  <header class="topbar">
+    <div class="brand-wrap">
+      <!-- home button: EMPTY, icon comes from CSS ::before -->
+      <button id="btnHome" class="home-btn" aria-label="Go to Home"></button>
+      <h1>Langlearn</h1>
+    </div>
+
+    <div class="lang-switch" id="topLangSwitch">
+      <button id="btnGerman">German</button>
+      <button id="btnJapanese">Japanese</button>
+      <button id="btnChinese">Chinese</button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <!-- ========================================
+           HOME SCREEN
+           ======================================== -->
+    <section id="homeView" class="home-screen">
+      <!-- language backdrop words -->
+      <div class="home-backdrop">
+        <div class="backdrop-line backdrop-de-1">
+          Hallo · Danke · lernen · sprechen · Freund · Übung · Reise
+        </div>
+        <div class="backdrop-line backdrop-de-2">
+          Guten Morgen · Kaffee · schreiben · hören · Zeit · Stadt · Schule
+        </div>
+
+        <div class="backdrop-line backdrop-jp-1">
+          はじめまして · ありがとう · 勉強 · 友だち · 先生 · 日本語 · ねこ
+        </div>
+        <div class="backdrop-line backdrop-jp-2">
+          おはよう · こんばんは · 練習 · 学校 · 映画 · ごはん · 東京
+        </div>
+
+        <div class="backdrop-line backdrop-cn-1">
+          你好 · 谢谢 · 学习 · 朋友 · 老师 · 汉字 · 北京 · 练习
+        </div>
+        <div class="backdrop-line backdrop-cn-2">
+          早上好 · 再见 · 听说 · 阅读 · 写字 · 家人 · 中国菜
+        </div>
+      </div>
+
+      <!-- main home content -->
+      <div class="home-inner">
+        <h2 class="home-title">
+          Who will you chat with today?
+          <span class="wave" aria-hidden="true">👋</span>
+        </h2>
+
+        <div class="home-cards">
+          <!-- German -->
+          <div class="home-card-wrap" id="homeGerman" data-target="germanView">
+            <div class="home-card home-card--de"></div>
+            <div class="home-flag-text">German • Practice with AI</div>
+          </div>
+
+          <!-- Japanese -->
+          <div class="home-card-wrap" id="homeJapanese" data-target="japaneseView">
+            <div class="home-card home-card--jp"></div>
+            <div class="home-flag-text">Japanese • Kana &amp; phrases</div>
+          </div>
+
+          <!-- Chinese -->
+          <div class="home-card-wrap" id="homeChinese" data-target="chineseView">
+            <div class="home-card home-card--cn">
+              <span class="cn-star s1">★</span>
+              <span class="cn-star s2">★</span>
+              <span class="cn-star s3">★</span>
+              <span class="cn-star s4">★</span>
+            </div>
+            <div class="home-flag-text">Chinese • Characters &amp; tones</div>
+          </div>
+        </div>
+
+        <p class="home-subtitle">
+          Choose your tutor to start a real conversation.
+        </p>
+      </div>
+    </section>
+    <!-- ^^^ IMPORTANT: homeView section is now properly closed ^^^ -->
+
+    <!-- ========================================
+           GERMAN PAGE
+           ======================================== -->
+    <main id="germanView" class="page-grid" style="display: none">
+      <!-- LEFT COLUMN: AI CHAT -->
+      <section class="col-left">
+        <div class="panel panel-chat panel-chat-main">
+          <div class="panel-header-row">
+            <div class="panel-header-main">
+              <span class="section-label">Practice</span>
+              <h2>German AI</h2>
+            </div>
+            <div class="chat-tools">
+              <button id="deHistoryToggle" class="icon-btn" title="Show chat history">
+                ☰
+              </button>
+              <button id="deNewChat" class="mini-btn">New chat</button>
+            </div>
+          </div>
+
+          <!-- history dropdown -->
+          <div id="deHistoryPanel" class="chat-history-panel">
+            <ul id="deHistoryList"></ul>
+          </div>
+
+          <div id="deChatWindow" class="chat-window"></div>
+          <div class="chat-input-row">
+            <input type="text" id="deChatInput" placeholder="ask in any language..." />
+            <button id="deChatSend">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MIDDLE COLUMN: add word + translator (50 / 50) -->
+      <section class="col-middle">
+        <div class="panel panel-add panel-half">
+          <span class="section-label">Notebook</span>
+          <h2>German – Add a new word</h2>
+
+          <label>
+            Word / Phrase
+            <input type="text" id="deWord" placeholder="your German word/sentence" />
+          </label>
+
+          <label>
+            Meaning / Notes
+            <textarea id="deMeaning" rows="3"></textarea>
+          </label>
+
+          <label>
+            Topic
+            <select id="deTopic">
+              <option value="">Choose a topic…</option>
+              <option value="Greetings">Greetings</option>
+              <option value="Work">Work</option>
+              <option value="Travel">Travel</option>
+              <option value="Grammar">Grammar</option>
+              <option value="Casual chat">Casual chat</option>
+              <option value="School">School</option>
+              <option value="Food &amp; drink">Food &amp; drink</option>
+            </select>
+          </label>
+
+          <label>
+            Natural translation / usage
+            <textarea id="deNatural" rows="3"></textarea>
+          </label>
+
+          <button id="deAdd">Save to German notebook</button>
+          <p class="hint">Saved locally in your browser.</p>
+        </div>
+
+        <div class="panel panel-translator panel-half">
+          <span class="section-label">Quick translate</span>
+          <h2>Translate to German</h2>
+
+          <label class="inline-label">
+            From language
+            <select id="deFromLang">
+              <option value="auto">Auto-detect</option>
+              <option value="en">English</option>
+              <option value="id">Indonesian</option>
+              <option value="fr">French</option>
+              <option value="es">Spanish</option>
+              <option value="jp">Japanese</option>
+              <option value="cn">Chinese</option>
+              <option value="tr">Turkish</option>
+            </select>
+          </label>
+
+          <textarea id="deTranslateIn" rows="3" placeholder="type your sentence in any language..."></textarea>
+
+          <button id="deTranslateBtn">Translate to German</button>
+
+          <textarea id="deTranslateOut" rows="4" readonly
+            placeholder="your German translation will appear here..."></textarea>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: WORD LIBRARY -->
+      <section class="col-right">
+        <div class="panel panel-list">
+          <span class="section-label">Your words</span>
+          <div class="list-header">
+            <h2>German – Saved words</h2>
+            <input type="text" id="deSearch" placeholder="search..." />
+          </div>
+          <ul id="deList"></ul>
+        </div>
+      </section>
+      <!-- MOBILE BOTTOM NAV -->
+      <nav class="mobile-bottom-nav">
+        <button class="nav-item active" data-target="col-left">
+          <span class="nav-icon">💬</span>
+          <span class="nav-label">Chat</span>
+        </button>
+        <button class="nav-item" data-target="col-middle">
+          <span class="nav-icon">📓</span>
+          <span class="nav-label">Notebook</span>
+        </button>
+        <button class="nav-item" data-target="col-right">
+          <span class="nav-icon">📚</span>
+          <span class="nav-label">Words</span>
+        </button>
+      </nav>
+    </main>
+
+    <!-- ========================================
+           JAPANESE PAGE
+           ======================================== -->
+    <main id="japaneseView" class="page-grid" style="display: none">
+      <!-- LEFT: AI -->
+      <section class="col-left">
+        <div class="panel panel-chat panel-chat-main">
+          <div class="panel-header-row">
+            <div class="panel-header-main">
+              <span class="section-label">Practice</span>
+              <h2>Japanese AI</h2>
+            </div>
+            <div class="chat-tools">
+              <button id="jpHistoryToggle" class="icon-btn" title="Show chat history">
+                ☰
+              </button>
+              <button id="jpNewChat" class="mini-btn">New chat</button>
+            </div>
+          </div>
+
+          <div id="jpHistoryPanel" class="chat-history-panel">
+            <ul id="jpHistoryList"></ul>
+          </div>
+
+          <div id="jpChatWindow" class="chat-window"></div>
+          <div class="chat-input-row">
+            <input type="text" id="jpChatInput" placeholder="ask in Japanese / English..." />
+            <button id="jpChatSend">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MIDDLE: add word + translator -->
+      <section class="col-middle">
+        <div class="panel panel-add panel-half">
+          <span class="section-label">Notebook</span>
+          <h2>Japanese – Add a new word</h2>
+
+          <label>
+            Word / Phrase
+            <input type="text" id="jpWord" placeholder="your Japanese word/sentence" />
+          </label>
+
+          <label>
+            Meaning / Notes
+            <textarea id="jpMeaning" rows="3"></textarea>
+          </label>
+
+          <label>
+            Topic
+            <select id="jpTopic">
+              <option value="">Choose a topic…</option>
+              <option value="Greetings">Greetings</option>
+              <option value="Work">Work</option>
+              <option value="Travel">Travel</option>
+              <option value="Grammar">Grammar</option>
+              <option value="Casual chat">Casual chat</option>
+              <option value="School">School</option>
+              <option value="Food &amp; drink">Food &amp; drink</option>
+            </select>
+          </label>
+
+          <label>
+            Natural translation / usage
+            <textarea id="jpNatural" rows="3"></textarea>
+          </label>
+
+          <button id="jpAdd">Save to Japanese notebook</button>
+          <p class="hint">Saved locally in your browser.</p>
+        </div>
+
+        <div class="panel panel-translator panel-half">
+          <span class="section-label">Quick translate</span>
+          <h2>Translate to Japanese</h2>
+
+          <label class="inline-label">
+            From language
+            <select id="jpFromLang">
+              <option value="auto">Auto-detect</option>
+              <option value="en">English</option>
+              <option value="id">Indonesian</option>
+              <option value="fr">French</option>
+              <option value="es">Spanish</option>
+              <option value="de">German</option>
+              <option value="cn">Chinese</option>
+            </select>
+          </label>
+
+          <textarea id="jpTranslateIn" rows="3" placeholder="type your sentence..."></textarea>
+
+          <button id="jpTranslateBtn">Translate to Japanese</button>
+
+          <textarea id="jpTranslateOut" rows="4" readonly
+            placeholder="your Japanese translation will appear here..."></textarea>
+        </div>
+      </section>
+
+      <!-- RIGHT: library -->
+      <section class="col-right">
+        <div class="panel panel-list">
+          <span class="section-label">Your words</span>
+          <div class="list-header">
+            <h2>Japanese – Saved words</h2>
+            <input type="text" id="jpSearch" placeholder="search..." />
+          </div>
+          <ul id="jpList"></ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========================================
+           CHINESE PAGE
+           ======================================== -->
+    <main id="chineseView" class="page-grid" style="display: none">
+      <!-- LEFT: AI -->
+      <section class="col-left">
+        <div class="panel panel-chat panel-chat-main">
+          <div class="panel-header-row">
+            <div class="panel-header-main">
+              <span class="section-label">Practice</span>
+              <h2>Chinese AI</h2>
+            </div>
+            <div class="chat-tools">
+              <button id="cnHistoryToggle" class="icon-btn" title="Show chat history">
+                ☰
+              </button>
+              <button id="cnNewChat" class="mini-btn">New chat</button>
+            </div>
+          </div>
+
+          <div id="cnHistoryPanel" class="chat-history-panel">
+            <ul id="cnHistoryList"></ul>
+          </div>
+
+          <div id="cnChatWindow" class="chat-window"></div>
+          <div class="chat-input-row">
+            <input type="text" id="cnChatInput" placeholder="ask in Chinese / English..." />
+            <button id="cnChatSend">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MIDDLE: add word + translator -->
+      <section class="col-middle">
+        <div class="panel panel-add panel-half">
+          <span class="section-label">Notebook</span>
+          <h2>Chinese – Add a new word</h2>
+
+          <label>
+            Word / Phrase
+            <input type="text" id="cnWord" placeholder="你的中文词 / sentence" />
+          </label>
+
+          <label>
+            Meaning / Notes
+            <textarea id="cnMeaning" rows="3"></textarea>
+          </label>
+
+          <label>
+            Topic
+            <select id="cnTopic">
+              <option value="">Choose a topic…</option>
+              <option value="Greetings">Greetings</option>
+              <option value="Work">Work</option>
+              <option value="Travel">Travel</option>
+              <option value="Grammar">Grammar</option>
+              <option value="Casual chat">Casual chat</option>
+              <option value="School">School</option>
+              <option value="Food &amp; drink">Food &amp; drink</option>
+            </select>
+          </label>
+
+          <label>
+            Natural translation / usage
+            <textarea id="cnNatural" rows="3"></textarea>
+          </label>
+
+          <button id="cnAdd">Save to Chinese notebook</button>
+          <p class="hint">Saved locally in your browser.</p>
+        </div>
+
+        <div class="panel panel-translator panel-half">
+          <span class="section-label">Quick translate</span>
+          <h2>Translate to Chinese</h2>
+
+          <label class="inline-label">
+            From language
+            <select id="cnFromLang">
+              <option value="auto">Auto-detect</option>
+              <option value="en">English</option>
+              <option value="id">Indonesian</option>
+              <option value="fr">French</option>
+              <option value="es">Spanish</option>
+              <option value="de">German</option>
+              <option value="jp">Japanese</option>
+            </select>
+          </label>
+
+          <textarea id="cnTranslateIn" rows="3" placeholder="type your sentence..."></textarea>
+
+          <button id="cnTranslateBtn">Translate to Chinese</button>
+
+          <textarea id="cnTranslateOut" rows="4" readonly
+            placeholder="your Chinese translation will appear here..."></textarea>
+        </div>
+      </section>
+
+      <!-- RIGHT: library -->
+      <section class="col-right">
+        <div class="panel panel-list">
+          <span class="section-label">Your words</span>
+          <div class="list-header">
+            <h2>Chinese – Saved words</h2>
+            <input type="text" id="cnSearch" placeholder="search..." />
+          </div>
+          <ul id="cnList"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- scripts -->
+  <script src="./config.js"></script>
+  <script src="./main.js" defer></script>
+  <script src="./german/german.js" defer></script>
+  <script src="./german/german-ai.js" defer></script>
+  <script src="./japan/japanese.js" defer></script>
+  <script src="./japan/japanese-ai.js" defer></script>
+  <script src="./china/chinese.js" defer></script>
+  <script src="./china/chinese-ai.js" defer></script>
+</body>
+
+</html>
